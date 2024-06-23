@@ -60,7 +60,7 @@ const RegistrationForm = () => {
 		}
 	}, [isAuth]);
 	return (
-		<Container className={'authForm__container'} maxWidth='sm' sx={{minHeight: '100vh'}}>
+		<Container className={'authForm__container'} maxWidth='sm'>
 			<Box component="form"
 				 noValidate
 				 className={'authForm'}

@@ -8,13 +8,17 @@ const init = () => {
     TokenModel.belongsTo(UserModel, { foreignKey: 'userId'});
 
 
-    UserModel.hasMany(PostModel, { as: 'myPosts', foreignKey: 'postOwner' });
+    UserModel.hasMany(PostModel, {
+        as: 'myPosts',
+        foreignKey: 'postOwner' });
     PostModel.belongsTo(UserModel, {
+        onDelete: 'CASCADE',
         as: 'owner',
         foreignKey: 'postOwner',
     });
 
     UserModel.belongsToMany(PostModel, {
+        onDelete: 'CASCADE',
         through: LikeModel,
         uniqueKey: 'id',
         foreignKey: 'userId',

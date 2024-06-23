@@ -30,7 +30,7 @@ const Header = () => {
 		setAnchorElUser(null);
 	};
 	return (
-		<AppBar position="absolute" >
+		<AppBar>
 			<Container maxWidth="xl">
 				<Toolbar disableGutters>
 					<Box sx={{display: 'flex', flexGrow: 1}}>

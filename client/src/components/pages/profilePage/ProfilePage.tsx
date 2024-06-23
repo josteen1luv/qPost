@@ -47,7 +47,7 @@ const ProfilePage = () => {
 	if(isLoading) return <CircularProgress />
 	return (
 		<Container maxWidth={'lg'} sx={{ pt:{xs:9, sm: 10}, display:'flex', alignItems: 'center', flexDirection: 'column', gap: 2}}>
-			<Avatar  sx={{ width: 80, height: 80 }}>{data.nickname[0].toUpperCase()}</Avatar>
+			<Avatar  sx={{ width: 80, height: 80, fontSize: 32 }}>{data.nickname[0].toUpperCase()}</Avatar>
 			<Box>
 				<Typography variant={'h1'} sx={{color:'text.primary', display:{xs:'none', sm: 'block'}}}>
 					{data.nickname}

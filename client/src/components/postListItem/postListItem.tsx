@@ -8,6 +8,7 @@ import {useSelector} from "react-redux";
 import {useDeleteMutation, useLikeMutation} from "../../api/post/postApiSlice";
 import {IUser} from "../../models/IUser";
 import PostForm from "../postForm/PostForm";
+import {Link} from "react-router-dom";
 
 interface IPostListItem {
 	title: string;
@@ -67,10 +68,14 @@ const PostListItem = ({title, description, nickname, created, edited, id, userId
 		>
 			<Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
 				<Box sx={{display: 'flex', alignItems: 'center', gap: 1}}>
-					<Avatar sx={{ bgcolor: '#B3B3B3', p: 0 }}>{nickname[0].toUpperCase()}</Avatar>
+					<Link to={`/user/${nickname}`}>
+						<Avatar sx={{ bgcolor: '#B3B3B3', p: 0 }}>{nickname[0].toUpperCase()}</Avatar>
+					</Link>
 					<Box>
 						<Typography color='secondary' variant='subtitle1' sx={{pl:'1px'}}>
-							{nickname}
+							<Link to={`/user/${nickname}`}>
+								{nickname}
+							</Link>
 						</Typography>
 						<Typography sx={{color: '#828282'}} variant='subtitle2'>
 							{created}
