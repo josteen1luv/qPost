@@ -1,0 +1,68 @@
+@import "../../../style/variables";
+.authForm {
+
+  text-align: center;
+  padding: 20px 20px;
+  border-radius: 15px;
+  background-color: $surface;
+  width: 370px;
+  top: 50%;
+  box-shadow: $box-shadow;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    text-align: center;
+    margin: 30px 0 40px 0;
+    font-size: 30px;
+    font-weight: 600;
+    color: $primary-text;
+  }
+
+  &__inputs-wrapper {
+    display: flex;
+    flex-direction: column;
+    &__item {
+      margin-bottom: 40px;
+    }
+  }
+  &__remember-me {
+    margin: -20px 0 25px -10px;
+  }
+
+  &__error {
+    color: $error;
+    margin-bottom: 10px;
+  }
+
+  &__buttons-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: stretch;
+    flex-direction: column;
+    margin: 0 0 30px;
+    &__item {
+      font-family: "Roboto", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+  }
+  &__label {
+    color: $secondary-text;
+  }
+
+  &__link {
+    color: $secondary-accent;
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+}
