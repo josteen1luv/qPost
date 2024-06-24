@@ -37,7 +37,7 @@ const LoginForm = React.memo(() => {
 		initialValues: initialValues,
 		validationSchema: validationSchema,
 		onSubmit: (values, {resetForm}) => {
-			login({email: values.email, password: values.password});
+			login({email: values.email.trim(), password: values.password});
 			resetForm();
 		},
 	});

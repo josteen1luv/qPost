@@ -16,19 +16,19 @@ import NicknameTextField from "../../../assets/formItems/NicknameTextField";
 import {useSelector} from "react-redux";
 import {selectIsAuth} from "../../../../api/auth/userSlice";
 
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+const passwordRules = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[^\s]{8,}$/;
 
 const validationSchema = Yup.object({
 	nickname: Yup.string()
-		.matches(/\w/gm, 'Please enter valid name')
-		.min(3)
-		.max(32)
+		.matches(/^[a-zA-Z0-9]+$/, 'Please enter valid nickname without special symbols and white spaces')
+		.min(3, 'Nickname should be of minimum 3 characters length')
+		.max(16, 'Nickname should be of maximum 16 characters length')
 		.required('Required field!'),
 	email:  Yup.string()
 		.email('Enter a valid email')
 		.required('Required field!'),
 	password: Yup.string()
-		.matches(passwordRules, 'Password must contain 8 or more characters with at least one of each: uppercase, lowercase, number and special')
+		.matches(passwordRules, 'Password must contain 8 or more characters with at least one of each: uppercase, lowercase, number and special and no white spaces')
 		.required('Required field!'),
 	confirmPassword: Yup.string()
 		.oneOf([Yup.ref('password')], 'Passwords must match')
@@ -49,7 +49,8 @@ const RegistrationForm = () => {
 		initialValues: initialValues,
 		validationSchema: validationSchema,
 		onSubmit: (values, {resetForm}) => {
-			registration({email: values.email, password: values.password, nickname: values.nickname});
+			console.log(values);
+			registration({email: values.email.trim(), password: values.password, nickname: values.nickname.trim()});
 			resetForm();
 		},
 	});
@@ -110,7 +111,7 @@ const RegistrationForm = () => {
 					/>
 				</div>
 				<div className={'authForm__buttons-wrapper'}>
-					{error.status === 'rejected' ? <label className={'authForm__error'}>Wrong email or password</label> : null}
+					{error.status === 'rejected' ? <label className={'authForm__error'}>Something went wrong, try again.</label> : null}
 					<Button
 						variant="contained"
 						type='submit'
